@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i-pi5*o0o8ka7%_)^lr8%@2uu$w*bcqm__37j!e32dxtiacp+m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'calorie_tracking_app',
 ]
 
 MIDDLEWARE = [

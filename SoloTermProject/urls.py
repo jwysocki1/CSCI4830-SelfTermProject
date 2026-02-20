@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from calorie_tracking_app import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('hello_world_app.urls'))
 ]
