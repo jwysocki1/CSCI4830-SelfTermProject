@@ -19,4 +19,4 @@ class DateForm(forms.ModelForm):
         model = Date
         fields = ['date']
 
-    date = forms.DateField(initial=datetime.date.today())
+    date = forms.CharField(initial=str(datetime.date.today()))

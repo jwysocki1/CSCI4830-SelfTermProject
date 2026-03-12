@@ -4,8 +4,11 @@ from django.db import models
 class Date(models.Model):
     date = models.DateField(primary_key=True)
 
+    class Meta:
+        ordering = ["date"]
+
     def __str__(self):
-        return self.date
+        return str(self.date)
 
 class Meal(models.Model):
     date = models.ForeignKey(Date, on_delete= models.CASCADE)
@@ -15,6 +18,9 @@ class Meal(models.Model):
     protein = models.IntegerField()
     fat = models.IntegerField()
     carbs = models.IntegerField()
+
+    class Meta:
+        ordering = ["time"]
 
     def __str__(self):
         return self.name

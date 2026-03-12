@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h1>Tracked Days</h1>
-    <form method="POST">
+    <h1>Calorie Tracker</h1>
+    <h3>Track a new day?</h3>
+    <form method="POST", action="{% url 'index' %}">
         {% csrf_token %} {{ form.as_p }}
-        <button type=""submit>New Day</button>
+        <button type="submit">New Day</button>
     </form>
+    <h3>Tracked Days</h3>
     <table>
         <tr><td>Date</td></tr>
-        {% for date in Date %}
+        {% for d in dates %}
         <tr>
-            <td>{{ date.date }}</td>
+            <td>{{ d.date }}</td>
+            <td>
+                <form method="GET" action="{% url 'manage_meals' d.date %}">
+                    {% csrf_token %}
+                    <button type="submit">Manage Meals</button>
+                </form>
+            </td>
+            <td>
+                <form method="POST" action="{% url 'delete_date' d.date %}"> {% csrf_token %}
+                <button type="submit">Delete</button> </form>
+            </td>
         </tr>
-        {% endfor%}
+        {% endfor %}
     </table>
 </body>
 </html>

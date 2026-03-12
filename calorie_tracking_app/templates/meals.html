@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Meals on {{ date }}</h1>
+    <h3>Track a new day?</h3>
+    <form method="POST", action="{% url 'manage_meals' date %}">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Enter Meal</button>
+    </form>
+    <h3>Today's Meals</h3>
+    <table>
+        <tr><td>Meal</td></tr>
+        {% for meal in meals %}
+        <tr>
+            <td>{{ meal.name }}</td>
+            <td>
+                <form method="GET" action="{% url 'edit_facts' meal.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Edit Facts</button>
+                </form>
+            </td>
+            <td>
+                <form method="POST" action="{% url 'delete_meal' meal.id %}"> {% csrf_token %}
+                <button type="submit">Delete</button> </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url '' %}">Go Back</a>
+</body>
+</html>
