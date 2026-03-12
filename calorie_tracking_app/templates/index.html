@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h1>Hello World</h1>
-    <p>This is the beginning of my calorie tracking application.</p>
+    <h1>Tracked Days</h1>
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type=""submit>New Day</button>
+    </form>
+    <table>
+        <tr><td>Date</td></tr>
+        {% for date in Date %}
+        <tr>
+            <td>{{ date.date }}</td>
+        </tr>
+        {% endfor%}
+    </table>
 </body>
 </html>

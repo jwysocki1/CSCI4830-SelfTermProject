@@ -1,5 +1,6 @@
 from django import forms
 from .models import Date, Meal
+import datetime
 
 class MealForm(forms.ModelForm):
     class Meta:
@@ -11,4 +12,11 @@ class MealForm(forms.ModelForm):
     calories = forms.IntegerField()
     protein = forms.IntegerField()
     fat = forms.IntegerField()
-    carbs = form.IntegerField()
+    carbs = forms.IntegerField()
+
+class DateForm(forms.ModelForm):
+    class Meta:
+        model = Date
+        fields = ['date']
+
+    date = forms.DateField(initial=datetime.date.today())

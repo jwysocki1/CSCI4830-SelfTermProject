@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Date(models.Model):
-    date = DateField(primary_key=True)
+    date = models.DateField(primary_key=True)
 
     def __str__(self):
         return self.date
