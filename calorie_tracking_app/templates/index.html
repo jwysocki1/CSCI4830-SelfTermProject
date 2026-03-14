@@ -14,14 +14,8 @@
         <tr>
             <td>{{ d.date }}</td>
             <td>
-                <form method="GET" action="{% url 'manage_meals' d.date %}">
-                    {% csrf_token %}
-                    <button type="submit">Manage Meals</button>
-                </form>
-            </td>
-            <td>
-                <form method="POST" action="{% url 'delete_date' d.date %}"> {% csrf_token %}
-                <button type="submit">Delete</button> </form>
+                <a href="{% url 'manage_meals' d.date %}">Manage Meals</a>
+                <a href="{% url 'delete_date' d.date %}">Delete</a>
             </td>
         </tr>
         {% endfor %}

@@ -11,6 +11,7 @@ class Date(models.Model):
         return str(self.date)
 
 class Meal(models.Model):
+    id = models.AutoField(primary_key=True)
     date = models.ForeignKey(Date, on_delete= models.CASCADE)
     time = models.TimeField()
     name = models.CharField(max_length=50)

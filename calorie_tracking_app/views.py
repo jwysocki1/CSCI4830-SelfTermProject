@@ -23,7 +23,7 @@ def delete_date(request, date):
     return index(request)
 
 def manage_meals(request, date):
-    meals_to_manage = Date.objects.filter(date=date)
+    meals_to_manage = Meal.objects.filter(date=date)
 
     if request.method == "POST":
         form= MealForm()

@@ -9,23 +9,20 @@
     </form>
     <h3>Today's Meals</h3>
     <table>
-        <tr><td>Meal</td></tr>
+        <tr><td>Meal</td><td>Calories</td><td>Protein</td><td>Fat</td><td>Carbs</td></tr>
         {% for meal in meals %}
         <tr>
-            <td>{{ meal.name }}</td>
+            <td>{{ meal.name }}</td><td>{{ meal.calories }}</td><td>{{ meal.protein }}</td>
+            <td>{{ meal.fat }}</td><td>{{ meal.carbs }}</td>
             <td>
-                <form method="GET" action="{% url 'edit_facts' meal.id %}">
-                    {% csrf_token %}
-                    <button type="submit">Edit Facts</button>
-                </form>
-            </td>
-            <td>
-                <form method="POST" action="{% url 'delete_meal' meal.id %}"> {% csrf_token %}
-                <button type="submit">Delete</button> </form>
+                {% if meal.id %}
+                <a href="{% url 'edit_facts' meal.id %}">Edit Facts</a>
+                <a href="{% url 'delete_meal' meal.id %}">Delete</a>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
     </table>
-    <a href="{% url '' %}">Go Back</a>
+    <a href="{% url 'index' %}">All Days</a>
 </body>
 </html>
